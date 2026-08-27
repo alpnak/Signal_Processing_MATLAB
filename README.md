@@ -31,11 +31,11 @@ Each script is self-contained, runnable, commented in Turkish (as required by th
 
 ## Part 1 — Image Processing (Questions 1–6)
 
+### Q1 — Reading and Displaying the Color Image
+
 Original color image used throughout this part:
 
 ![Original lion image](aslan.jpeg)
-
-### Q1 — Reading and Displaying the Color Image
 
 A color image is 3-dimensional (x, y, color), where the color axis holds the red, green, and blue (RGB) intensity values.
 
@@ -43,61 +43,82 @@ A color image is 3-dimensional (x, y, color), where the color axis holds the red
 **b)** Find the RGB values of the pixel at position (371, 371).
 **c)** Display the image as a figure.
 
-<!-- Add the Q1 output image(s) here, e.g.: -->
-<!-- ![Q1 output](images/q1_output.png) -->
-
 ### Q2 — Grayscale Conversion, Histogram, and Region Recoloring
 
 A grayscale image is 2-dimensional (x, y); each pixel holds a single intensity value between black and white.
 
 **a)** Convert the color image to grayscale and display it as a figure.
+
+![Grey-toned lion image](gri_aslan.png)
+
 **b)** Find the value of the pixel at position (371, 371).
+
 **c)** Plot the histogram of the grayscale image (x-axis: pixel intensity, y-axis: count).
+
+![Grey-toned lion image histogram](gri_aslan_histogram.png)
+
 **d)** Find the probability that a randomly chosen pixel has an intensity greater than 131.
+
 **e)** Recolor the image using two thresholds (92 and 171): pixels ≤ 92 → black, 92 < pixels ≤ 171 → red, pixels > 171 → yellow. Display the result as a figure.
+
+![Recolored lion image](aslan2.png)
+
 **f)** Display, as a separate figure, the region between pixels 200 and 824 (both width and height) of the recolored image.
 
-<!-- Add the Q2 output image(s) here, e.g.: -->
-<!-- ![Q2a - Grayscale image](images/q2a_grayscale.png) -->
-<!-- ![Q2c - Histogram](images/q2c_histogram.png) -->
-<!-- ![Q2e - Recolored image](images/q2e_recolored.png) -->
-<!-- ![Q2f - Cropped region](images/q2f_cropped.png) -->
+![Recolored lion image-2](aslan3.png)
 
 ### Q3 — Channel Averages, Mean Subtraction, and Image Inversion
 
 **a)** Find the average color (R, G, B) value across all pixels of the color image.
-**b)** Subtract these average values from every pixel and display the new image as a figure.
-**c)** Compute the inverse of the image — defined as the color values that complement the original values to 255 (i.e. 255 minus each pixel value) — and display it as a figure.
-**d)** Add the inverted image to the original image and display the result as a figure. What do you notice?
 
-<!-- Add the Q3 output image(s) here, e.g.: -->
-<!-- ![Q3b - Mean-subtracted image](images/q3b_mean_subtracted.png) -->
-<!-- ![Q3c - Inverted image](images/q3c_inverted.png) -->
-<!-- ![Q3d - Image + inverse](images/q3d_sum.png) -->
+**b)** Subtract these average values from every pixel and display the new image as a figure.
+
+![Recolored lion image-3](aslan4.png)
+
+**c)** Compute the inverse of the image — defined as the color values that complement the original values to 255 (i.e. 255 minus each pixel value) — and display it as a figure.
+
+![Recolored lion image-4](aslan5.png)
+
+**d)** Add the inverted image to the original image and display the result as a figure. What do you notice?
 
 ### Q4 — Downsampling and 2×2 Pooling
 
 This question implements various downsampling methods to compress the image while trying to preserve as much quality as possible.
 
 **a)** Find the size of the original color image in kilobytes.
+
 **b)** Remove the even-indexed rows and columns and merge the remaining pixels; save the new image and find its size.
+
 **c)** Keep only every 4th row and column (dropping the rest); save the new image and find its size. Display all three images (original, b, c) side by side in one figure.
+
 **d)** Apply 2×2 max pooling, min pooling, and average pooling (each reducing the image to a quarter of its size) and display the three results together with the original in a 2×2 layout, along with their file sizes.
+
+Max pooled lion imaage
+![Max pooled](max_pooled.jpg)
+
+Min pooled lion imaage
+![Min pooled](min_pooled.jpg)
+
+Average pooled lion imaage
+![Average pooled](average_pooled.jpg)
+
 **e)** Given image quality and file size, which method would you prefer? Compare and explain.
 
-<!-- Add the Q4 output image(s) here, e.g.: -->
-<!-- ![Q4c - Original vs. downsampled images](images/q4c_downsampled_comparison.png) -->
-<!-- ![Q4d - Original vs. pooled images](images/q4d_pooling_comparison.png) -->
-<!-- ![Q4e - Zoomed-in comparison](images/q4e_zoomed_comparison.png) -->
-
 ### Q5 — Edge Detection via Convolution
+
+Original color image used throughout this part:
+
+![Original city image](sehir.jpg)
 
 The following 1×2 impulse response is applied to an image (convolution) to detect edges in it.
 
 **a)** Open the city image in MATLAB and convert it to grayscale. Convolve it with the 1×2 impulse response matrix `h[i,j] = [0.02, -0.02]`. Display the new image alongside the original in a single figure and interpret the results.
 
-<!-- Add the Q5 output image(s) here, e.g.: -->
-<!-- ![Q5a - Original, grayscale, and convolved images](images/q5a_edge_detection.png) -->
+Grey-toned city image
+![Grey-toned city image](gri_sehir.jpg)
+
+Convolved city image
+![Convolved city image](konvolusyon_sehir.jpg)
 
 ### Q6 — Noise and Denoising
 
