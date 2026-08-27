@@ -1,6 +1,6 @@
 # Image and Audio Signal Processing Project With MATLAB
 
-MATLAB coursework project for Signals and Systems. The project applies core signals-and-systems concepts — convolution, the Fourier transform, filtering, and amplitude modulation — to real image and audio data. It contains seven MATLAB exercises split into two parts:
+MATLAB coursework project for Signals and Systems. The project applies core signals-and-systems concepts (convolution, the Fourier transform, filtering, and amplitude modulation) to real image and audio data. It contains seven MATLAB exercises split into two parts:
 
 **Image Processing** (reading and inspecting RGB/grayscale images, pixel-level statistics and probability, histogram analysis, image arithmetic, downsampling and 2×2 pooling, edge detection via 2D convolution, and denoising)
 
@@ -8,7 +8,7 @@ MATLAB coursework project for Signals and Systems. The project applies core sign
 
 Each script is self-contained, runnable, commented in Turkish (as required by the course), and produces the figures and console output documented in the accompanying report. Running the scripts requires MATLAB (developed/tested on R2023b or later) with the Image Processing Toolbox (`rgb2gray`, `imnoise`, `imgaussfilt`, `imhist`, `imwrite`, `imfinfo`), the Signal Processing Toolbox (`butter`, `filter`, `awgn`, `conv`, `conv2`, `fft`), and audio I/O support (`audioread`, `audiowrite`, `sound`).
 
-## Part 1 — Image Processing (Questions 1–6)
+## Part 1 — Image Processing
 
 ### Q1 — Reading and Displaying the Color Image
 
@@ -18,9 +18,9 @@ Original color image used throughout this part:
 
 A color image is 3-dimensional (x, y, color), where the color axis holds the red, green, and blue (RGB) intensity values.
 
-**a)** The image was opened in MATLAB, and its width and height in pixels were found.
+**a)** The image was opened in MATLAB, and its width and height in pixels were found as 1024x1024.
 
-**b)** The RGB values of the pixel at position (371, 371) were found.
+**b)** The RGB values of the pixel at position (371, 371) were found as (81, 20, 27).
 
 **c)** The image was displayed as a figure.
 
@@ -32,13 +32,13 @@ A grayscale image is 2-dimensional (x, y); each pixel holds a single intensity v
 
 ![Grey-toned lion image](gri_aslan.png)
 
-**b)** The value of the pixel at position (371, 371) was found.
+**b)** The value of the pixel at position (371, 371) was found as 39.
 
 **c)** The histogram of the grayscale image was plotted (x-axis: pixel intensity, y-axis: count).
 
 ![Grey-toned lion image histogram](gri_aslan_histogram.png)
 
-**d)** The probability that a randomly chosen pixel has an intensity greater than 131 was found.
+**d)** The probability that a randomly chosen pixel has an intensity greater than 131 was found as 0.367273.
 
 **e)** The image was recolored using two thresholds (92 and 171): pixels ≤ 92 were colored black, 92 < pixels ≤ 171 were colored red, and pixels > 171 were colored yellow. The result was displayed as a figure.
 
@@ -50,13 +50,13 @@ A grayscale image is 2-dimensional (x, y); each pixel holds a single intensity v
 
 ### Q3 — Channel Averages, Mean Subtraction, and Image Inversion
 
-**a)** The average color (R, G, B) value across all pixels of the color image was found.
+**a)** The average color (R, G, B) value across all pixels of the color image was found as (142.19281, 92.62333, 86.77158).
 
 **b)** These average values were subtracted from every pixel, and the new image was displayed as a figure.
 
 ![Recolored lion image-3](aslan4.png)
 
-**c)** The inverse of the image — the color values that complement the original values to 255 (i.e. 255 minus each pixel value) — was computed and displayed as a figure.
+**c)** The inverse of the image, the color values that complement the original values to 255 (255 minus each pixel value), was computed and displayed as a figure.
 
 ![Recolored lion image-4](aslan5.png)
 
@@ -66,11 +66,11 @@ A grayscale image is 2-dimensional (x, y); each pixel holds a single intensity v
 
 This question implements various downsampling methods to compress the image while trying to preserve as much quality as possible.
 
-**a)** The size of the original color image was found in kilobytes.
+**a)** The size of the original color image was found in kilobytes as 3145.728 KB.
 
-**b)** The even-indexed rows and columns were removed and the remaining pixels were merged; the new image was saved, and its size was found.
+**b)** The even-indexed rows and columns were removed and the remaining pixels were merged; the new image was saved, and its size was found as 786.432 KB.
 
-**c)** Only every 4th row and column were kept, with the rest dropped; the new image was saved, and its size was found. The three images (original, b, c) were displayed side by side in one figure.
+**c)** Only every 4th row and column were kept, with the rest dropped; the new image was saved, and its size was found as 196.608 KB. The three images (original, b, c) were displayed side by side in one figure.
 
 **d)** 2×2 max pooling, min pooling, and average pooling were applied, each reducing the image to a quarter of its size, and the three results were displayed together with the original in a 2×2 layout, along with their file sizes.
 
@@ -93,8 +93,6 @@ Average pooled lion image
 Original color image used throughout this part:
 
 ![Original city image](sehir.jpg)
-
-The following 1×2 impulse response is applied to an image (convolution) to detect edges in it.
 
 **a)** The city image was opened in MATLAB and converted to grayscale. Its convolution with the 1×2 impulse response matrix h[i,j] = [0.02, -0.02] was taken. The new image was displayed alongside the original in a single figure, and the results were interpreted.
 
@@ -126,11 +124,13 @@ This question adds noise to the image and then filters it out.
 
 **b)** A Gaussian filter (imgaussfilt) was applied to the 0.1-variance noisy image. The original, noisy, and filtered images were displayed and compared side by side in one figure.
 
-## Part 2 — Audio Processing & AM Communication (Question 7)
+## Part 2 — Audio Processing
+
+### Q6 — Audio Processing & AM Communication
 
 This part analyzes an audio signal in the time and frequency domains, adds echo, adds and removes noise, and performs the modulation/demodulation stages of AM communication.
 
-### a) The guitar audio was opened and listened to in MATLAB. The sampling frequency, number of samples, and duration were found. The signal was plotted over time.
+### a) The guitar audio was opened and listened to in MATLAB. The sampling frequency, number of samples, and duration were found as 44100 Hz, 260976 and 5.91782 s. The signal was plotted over time.
 
 Amplitude-time graph of guitar audio
 
@@ -142,7 +142,7 @@ Amplitude-frequency graph of guitar audio
 
 ![Guitar amplitude-frequency graph](gitar_genlik-frekans.jpg)
 
-### c) An impulse response that adds echo to the sound was found, producing an output containing the original signal, an echo at 1/4 the original amplitude after 1 second, and another echo at 1/16 the original amplitude after 2 seconds (y[n] = x[n] + x[n-1]/4 + x[n-2]/16). The impulse response was applied via convolution, and the output was saved and listened to. Its duration was found and compared with the original signal, and its time-domain and frequency-spectrum graphs were plotted and compared with the original.
+### c) An impulse response that adds echo to the sound was found, producing an output containing the original signal, an echo at 1/4 the original amplitude after 1 second, and another echo at 1/16 the original amplitude after 2 seconds (y[n] = x[n] + x[n-1]/4 + x[n-2]/16). The impulse response was applied via convolution, and the output was saved and listened to. Its duration was found as 7.91782 s and compared with the original signal, and its time-domain and frequency-spectrum graphs were plotted and compared with the original.
 
 Echo added amplitude-time graph of guitar audio
 
