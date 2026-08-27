@@ -153,21 +153,21 @@ Original input audio used throughout this part:
 
 🔊 [gitar.wav — original guitar recording](gitar.wav)
 
-<!-- On GitHub, a relative link to an audio file opens the repo's built-in blob viewer, which includes a play button. -->
-
 ### a) Loading and Inspecting the Audio Signal
 
 Open and listen to the guitar audio in MATLAB. Find the sampling frequency, number of samples, and duration. Plot the signal over time.
 
-<!-- Add the Q7a output here, e.g.: -->
-<!-- ![Q7a - Time-domain plot](images/q7a_time_domain.png) -->
+Amplitude-time graph of guitar audio
+
+![Guitar amplitude-time graph](gitar_genlik-zaman.jpg)
 
 ### b) Frequency Spectrum
 
 Take the Fourier transform of the audio signal and plot its frequency spectrum. Interpret the result.
 
-<!-- Add the Q7b output here, e.g.: -->
-<!-- ![Q7b - Frequency spectrum](images/q7b_frequency_spectrum.png) -->
+Amplitude-frequency graph of guitar audio
+
+![Guitar amplitude-frequency graph](gitar_genlik-frekans.jpg)
 
 ### c) Adding Echo
 
@@ -175,9 +175,13 @@ Find an impulse response that adds echo to the sound: the output should contain 
 
 🔊 [yankili_gitar.wav — echoed guitar recording](yankili_gitar.wav)
 
-<!-- Add the Q7c output here, e.g.: -->
-<!-- ![Q7c - Echoed signal, time domain](images/q7c_time_domain.png) -->
-<!-- ![Q7c - Echoed signal, frequency spectrum](images/q7c_frequency_spectrum.png) -->
+Echo added amplitude-time graph of guitar audio
+
+![Echo added guitar amplitude-time graph](yankılı_gitar_genlik-zaman.jpg)
+
+Echo added amplitude-frequency graph of guitar audio
+
+![Echo added guitar amplitude-frequency graph](yankılı_gitar_genlik-frekans.jpg)
 
 ### d) AM Modulation at Two Carrier Frequencies
 
@@ -186,15 +190,17 @@ Multiply the echoed signal by `cos(2πfc·t)` to modulate it, using fc = 1 kHz a
 🔊 [modulated_1khz.wav — modulated at fc = 1 kHz](modulated_1khz.wav)
 🔊 [modulated_10mhz.wav — modulated at fc = 10 MHz](modulated_10mhz.wav)
 
-<!-- Add any relevant notes/audio files for Q7d here -->
-
 ### e) Modulated Signal at fc = 10 MHz
 
 Plot the time-domain and frequency-spectrum graphs of the signal modulated with the fc = 10 MHz carrier. What do you notice?
 
-<!-- Add the Q7e output here, e.g.: -->
-<!-- ![Q7e - Modulated signal, time domain](images/q7e_time_domain.png) -->
-<!-- ![Q7e - Modulated signal, frequency spectrum](images/q7e_frequency_spectrum.png) -->
+Modulated amplitude-time graph of guitar audio
+
+![Modulated guitar amplitude-time graph](module_gitar_genlik-zaman.jpg)
+
+Modulated amplitude-frequency graph of guitar audio
+
+![Modulated guitar amplitude-frequency graph](module_gitar_genlik-frekans.jpg)
 
 ### f) Re-modulation, Low-Pass Filtering, and Demodulation
 
