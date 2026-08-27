@@ -94,12 +94,15 @@ This question implements various downsampling methods to compress the image whil
 **d)** Apply 2×2 max pooling, min pooling, and average pooling (each reducing the image to a quarter of its size) and display the three results together with the original in a 2×2 layout, along with their file sizes.
 
 Max pooled lion imaage
+
 ![Max pooled](max_pooled.jpg)
 
 Min pooled lion imaage
+
 ![Min pooled](min_pooled.jpg)
 
 Average pooled lion imaage
+
 ![Average pooled](average_pooled.jpg)
 
 **e)** Given image quality and file size, which method would you prefer? Compare and explain.
@@ -115,9 +118,11 @@ The following 1×2 impulse response is applied to an image (convolution) to dete
 **a)** Open the city image in MATLAB and convert it to grayscale. Convolve it with the 1×2 impulse response matrix `h[i,j] = [0.02, -0.02]`. Display the new image alongside the original in a single figure and interpret the results.
 
 Grey-toned city image
+
 ![Grey-toned city image](gri_sehir.jpg)
 
 Convolved city image
+
 ![Convolved city image](konvolusyon_sehir.jpg)
 
 ### Q6 — Noise and Denoising
