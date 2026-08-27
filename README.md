@@ -1,15 +1,6 @@
-# ELE371-Signals-Systems-Image-Audio-Processing
+# Image and Audio Signal Processing Project With MATLAB
 
-MATLAB coursework project for **ELE 371 – Signals and Systems** (TOBB University of Economics and Technology, Spring 2024). The project applies core signals-and-systems concepts — convolution, the Fourier transform, filtering, and amplitude modulation — to real image and audio data.
-
-## Description
-
-This repository contains seven MATLAB exercises split into two parts:
-
-- **Image Processing** – reading and inspecting RGB/grayscale images, pixel-level statistics and probability, histogram analysis, image arithmetic (inversion, thresholding/color-mapping), downsampling and 2×2 pooling (max/min/average), edge detection via 2D convolution, and denoising with Gaussian noise and Gaussian filtering.
-- **Audio Processing & AM Communication** – time- and frequency-domain analysis of an audio signal, adding echo via an impulse response, AM modulation/demodulation at two carrier frequencies, adding and removing white Gaussian noise with a Butterworth low-pass filter, and signal recovery.
-
-Each script is self-contained, runnable, and commented in Turkish (as required by the course), and produces the figures and console output documented in the accompanying report.
+MATLAB coursework project for **ELE 371 – Signals and Systems** (TOBB University of Economics and Technology, Spring 2024). The project applies core signals-and-systems concepts — convolution, the Fourier transform, filtering, and amplitude modulation — to real image and audio data. It contains seven MATLAB exercises split into two parts: **Image Processing** (reading and inspecting RGB/grayscale images, pixel-level statistics and probability, histogram analysis, image arithmetic, downsampling and 2×2 pooling, edge detection via 2D convolution, and denoising) and **Audio Processing & AM Communication** (time- and frequency-domain analysis, echo via an impulse response, AM modulation/demodulation at two carrier frequencies, adding/removing white Gaussian noise with a Butterworth low-pass filter, and signal recovery). Each script is self-contained, runnable, commented in Turkish (as required by the course), and produces the figures and console output documented in the accompanying report. Running the scripts requires MATLAB (developed/tested on R2023b or later) with the Image Processing Toolbox (`rgb2gray`, `imnoise`, `imgaussfilt`, `imhist`, `imwrite`, `imfinfo`), the Signal Processing Toolbox (`butter`, `filter`, `awgn`, `conv`, `conv2`, `fft`), and audio I/O support (`audioread`, `audiowrite`, `sound`).
 
 ## Repository Structure
 
@@ -34,50 +25,166 @@ Each script is self-contained, runnable, and commented in Turkish (as required b
 
 ## Part 1 — Image Processing (Questions 1–6)
 
-| Question | Topic |
-|---|---|
-| Q1 | Load a JPEG, find image dimensions, read RGB values at a given pixel, display the image |
-| Q2 | Convert to grayscale, read pixel intensity, plot histogram, compute empirical probability via Monte Carlo sampling, threshold/recolor by intensity bands, crop a region |
-| Q3 | Compute per-channel (R/G/B) means, subtract means from the image, invert the image (255 − pixel), sum image and inverse |
-| Q4 | Compute file size in kB, downsample by dropping even/every-4th rows & columns, implement 2×2 max/min/average pooling from scratch, compare quality vs. compression |
-| Q5 | Convert a city image to grayscale and convolve with a 1×2 edge-detection kernel `[0.02, -0.02]` |
-| Q6 | Add Gaussian noise at three variances (0.1, 0.4, 0.7) and apply Gaussian filtering for denoising |
+Original color image used throughout this part:
+
+![Original lion image](aslan.jpeg)
+
+### Q1 — Reading and Displaying the Color Image
+
+A color image is 3-dimensional (x, y, color), where the color axis holds the red, green, and blue (RGB) intensity values.
+
+**a)** Open the image in MATLAB and find its width and height in pixels.
+**b)** Find the RGB values of the pixel at position (371, 371).
+**c)** Display the image as a figure.
+
+<!-- Add the Q1 output image(s) here, e.g.: -->
+<!-- ![Q1 output](images/q1_output.png) -->
+
+### Q2 — Grayscale Conversion, Histogram, and Region Recoloring
+
+A grayscale image is 2-dimensional (x, y); each pixel holds a single intensity value between black and white.
+
+**a)** Convert the color image to grayscale and display it as a figure.
+**b)** Find the value of the pixel at position (371, 371).
+**c)** Plot the histogram of the grayscale image (x-axis: pixel intensity, y-axis: count).
+**d)** Find the probability that a randomly chosen pixel has an intensity greater than 131.
+**e)** Recolor the image using two thresholds (92 and 171): pixels ≤ 92 → black, 92 < pixels ≤ 171 → red, pixels > 171 → yellow. Display the result as a figure.
+**f)** Display, as a separate figure, the region between pixels 200 and 824 (both width and height) of the recolored image.
+
+<!-- Add the Q2 output image(s) here, e.g.: -->
+<!-- ![Q2a - Grayscale image](images/q2a_grayscale.png) -->
+<!-- ![Q2c - Histogram](images/q2c_histogram.png) -->
+<!-- ![Q2e - Recolored image](images/q2e_recolored.png) -->
+<!-- ![Q2f - Cropped region](images/q2f_cropped.png) -->
+
+### Q3 — Channel Averages, Mean Subtraction, and Image Inversion
+
+**a)** Find the average color (R, G, B) value across all pixels of the color image.
+**b)** Subtract these average values from every pixel and display the new image as a figure.
+**c)** Compute the inverse of the image — defined as the color values that complement the original values to 255 (i.e. 255 minus each pixel value) — and display it as a figure.
+**d)** Add the inverted image to the original image and display the result as a figure. What do you notice?
+
+<!-- Add the Q3 output image(s) here, e.g.: -->
+<!-- ![Q3b - Mean-subtracted image](images/q3b_mean_subtracted.png) -->
+<!-- ![Q3c - Inverted image](images/q3c_inverted.png) -->
+<!-- ![Q3d - Image + inverse](images/q3d_sum.png) -->
+
+### Q4 — Downsampling and 2×2 Pooling
+
+This question implements various downsampling methods to compress the image while trying to preserve as much quality as possible.
+
+**a)** Find the size of the original color image in kilobytes.
+**b)** Remove the even-indexed rows and columns and merge the remaining pixels; save the new image and find its size.
+**c)** Keep only every 4th row and column (dropping the rest); save the new image and find its size. Display all three images (original, b, c) side by side in one figure.
+**d)** Apply 2×2 max pooling, min pooling, and average pooling (each reducing the image to a quarter of its size) and display the three results together with the original in a 2×2 layout, along with their file sizes.
+**e)** Given image quality and file size, which method would you prefer? Compare and explain.
+
+<!-- Add the Q4 output image(s) here, e.g.: -->
+<!-- ![Q4c - Original vs. downsampled images](images/q4c_downsampled_comparison.png) -->
+<!-- ![Q4d - Original vs. pooled images](images/q4d_pooling_comparison.png) -->
+<!-- ![Q4e - Zoomed-in comparison](images/q4e_zoomed_comparison.png) -->
+
+### Q5 — Edge Detection via Convolution
+
+The following 1×2 impulse response is applied to an image (convolution) to detect edges in it.
+
+**a)** Open the city image in MATLAB and convert it to grayscale. Convolve it with the 1×2 impulse response matrix `h[i,j] = [0.02, -0.02]`. Display the new image alongside the original in a single figure and interpret the results.
+
+<!-- Add the Q5 output image(s) here, e.g.: -->
+<!-- ![Q5a - Original, grayscale, and convolved images](images/q5a_edge_detection.png) -->
+
+### Q6 — Noise and Denoising
+
+This question adds noise to the image and then filters it out.
+
+**a)** Add Gaussian noise with variances 0.1, 0.4, and 0.7 to the color image using `imnoise`. Display the original image together with the three noisy versions in a single figure.
+**b)** Apply a Gaussian filter (`imgaussfilt`) to the 0.1-variance noisy image. Display and compare the original, noisy, and filtered images side by side in one figure.
+
+<!-- Add the Q6 output image(s) here, e.g.: -->
+<!-- ![Q6a - Original and noisy images](images/q6a_noise.png) -->
+<!-- ![Q6b - Original, noisy, and filtered images](images/q6b_denoised.png) -->
 
 ## Part 2 — Audio Processing & AM Communication (Question 7)
 
-- Load and play a guitar audio clip; determine sampling rate, sample count, and duration; plot the time-domain signal.
-- Compute and plot the frequency spectrum via FFT.
-- Add echo using the impulse response `y[n] = x[n] + x[n-1]/4 + x[n-2]/16` (via convolution) and compare with the original.
-- Amplitude-modulate the echoed signal with carriers at 1 kHz and 10 MHz and compare the results.
-- Plot the modulated signal's time/frequency behavior at fc = 10 MHz.
-- Re-modulate and demodulate with a Butterworth low-pass filter; inspect the recovered spectrum.
-- Add white Gaussian noise (`awgn`) and inspect the resulting spectrum.
-- Filter the noisy signal with a higher-order Butterworth low-pass filter and compare with the echoed signal's spectrum.
-- Recover the original signal using the echo's impulse response and compare with the original recording.
+This part analyzes an audio signal in the time and frequency domains, adds echo, adds and removes noise, and performs the modulation/demodulation stages of AM communication.
 
-## Requirements
+Original input audio used throughout this part:
 
-- MATLAB (developed/tested on R2023b or later)
-- Image Processing Toolbox (`rgb2gray`, `imnoise`, `imgaussfilt`, `imhist`, `imwrite`, `imfinfo`)
-- Signal Processing Toolbox (`butter`, `filter`, `awgn`, `conv`, `conv2`, `fft`)
-- Audio I/O support (`audioread`, `audiowrite`, `sound`)
+🔊 [gitar.wav — original guitar recording](gitar.wav)
 
-## How to Run
+<!-- On GitHub, a relative link to an audio file opens the repo's built-in blob viewer, which includes a play button. -->
 
-1. Clone the repository and open it as the MATLAB working directory.
-2. Ensure `aslan.jpeg`, `sehir.jpg`, and `gitar.wav` are present in the same folder.
-3. Run `soru1.m` through `soru6.m` in order for the image-processing part (each `%%` section can also be run cell-by-cell in the MATLAB Editor).
-4. Run `soru7.m` independently for the audio/AM communication part.
-5. Figures are generated automatically; some sections play audio aloud and pause execution while doing so.
+### a) Loading and Inspecting the Audio Signal
 
-## Author
+Open and listen to the guitar audio in MATLAB. Find the sampling frequency, number of samples, and duration. Plot the signal over time.
 
-Alperen Nakiboğlu — TOBB University of Economics and Technology, Electrical-Electronics Engineering (Student No. 211201062)
+<!-- Add the Q7a output here, e.g.: -->
+<!-- ![Q7a - Time-domain plot](images/q7a_time_domain.png) -->
 
-## Course
+### b) Frequency Spectrum
 
-ELE 371 – Signals and Systems, Spring 2024, TOBB University of Economics and Technology
+Take the Fourier transform of the audio signal and plot its frequency spectrum. Interpret the result.
 
-## License
+<!-- Add the Q7b output here, e.g.: -->
+<!-- ![Q7b - Frequency spectrum](images/q7b_frequency_spectrum.png) -->
 
-For academic/educational use. Add a license of your choice (e.g. MIT) if you intend to share this repository publicly.
+### c) Adding Echo
+
+Find an impulse response that adds echo to the sound: the output should contain the original signal, an echo at 1/4 the original amplitude after 1 second, and another echo at 1/16 the original amplitude after 2 seconds (`y[n] = x[n] + x[n-1]/4 + x[n-2]/16`). Apply the impulse response via convolution, save and listen to the output, find its duration, and compare it with the original signal. Plot its time-domain and frequency-spectrum graphs and compare them with the original.
+
+🔊 [yankili_gitar.wav — echoed guitar recording](yankili_gitar.wav)
+
+<!-- Add the Q7c output here, e.g.: -->
+<!-- ![Q7c - Echoed signal, time domain](images/q7c_time_domain.png) -->
+<!-- ![Q7c - Echoed signal, frequency spectrum](images/q7c_frequency_spectrum.png) -->
+
+### d) AM Modulation at Two Carrier Frequencies
+
+Multiply the echoed signal by `cos(2πfc·t)` to modulate it, using fc = 1 kHz and fc = 10 MHz to produce two different signals. Listen to both. What do you notice?
+
+🔊 [modulated_1khz.wav — modulated at fc = 1 kHz](modulated_1khz.wav)
+🔊 [modulated_10mhz.wav — modulated at fc = 10 MHz](modulated_10mhz.wav)
+
+<!-- Add any relevant notes/audio files for Q7d here -->
+
+### e) Modulated Signal at fc = 10 MHz
+
+Plot the time-domain and frequency-spectrum graphs of the signal modulated with the fc = 10 MHz carrier. What do you notice?
+
+<!-- Add the Q7e output here, e.g.: -->
+<!-- ![Q7e - Modulated signal, time domain](images/q7e_time_domain.png) -->
+<!-- ![Q7e - Modulated signal, frequency spectrum](images/q7e_frequency_spectrum.png) -->
+
+### f) Re-modulation, Low-Pass Filtering, and Demodulation
+
+Multiply this signal again by `cos(2πfc·t)` (fc = 10 MHz) and inspect the frequency spectrum. Then pass it through a low-pass filter to demodulate it and inspect the frequency spectrum again.
+
+<!-- Add the Q7f output here, e.g.: -->
+<!-- ![Q7f - Re-modulated signal, frequency spectrum](images/q7f_remodulated_spectrum.png) -->
+<!-- ![Q7f - Demodulated signal, frequency spectrum](images/q7f_demodulated_spectrum.png) -->
+
+### g) Adding Noise
+
+Add random noise to this signal — for example, White Gaussian Noise. Listen to the noisy audio and make sure the noise is audible. Plot its frequency spectrum.
+
+🔊 [noisy_gitar.wav — demodulated signal with added noise](noisy_gitar.wav)
+
+<!-- Add the Q7g output here, e.g.: -->
+<!-- ![Q7g - Noisy signal, time domain](images/q7g_time_domain.png) -->
+<!-- ![Q7g - Noisy signal, frequency spectrum](images/q7g_frequency_spectrum.png) -->
+
+### h) Filtering the Noise
+
+Filter out this noise. Compare whether the resulting spectrum matches the echoed signal's spectrum.
+
+<!-- Add the Q7h output here, e.g.: -->
+<!-- ![Q7h - Filtered vs. echoed spectrum](images/q7h_filtered_vs_echoed.png) -->
+
+### i) Recovering the Original Signal
+
+Using the impulse response from part (c), recover the original signal. Save and listen to this audio. Plot its frequency spectrum. Is it the same as the first recording?
+
+🔊 [recovered_gitar.wav — recovered original signal](recovered_gitar.wav)
+
+<!-- Add the Q7i output here, e.g.: -->
+<!-- ![Q7i - Recovered signal, frequency spectrum](images/q7i_recovered_spectrum.png) -->
