@@ -128,10 +128,6 @@ This question adds noise to the image and then filters it out.
 
 This part analyzes an audio signal in the time and frequency domains, adds echo, adds and removes noise, and performs the modulation/demodulation stages of AM communication.
 
-Original input audio used throughout this part:
-
-🔊 [gitar.wav — original guitar recording](gitar.wav)
-
 ### a) Loading and Inspecting the Audio Signal
 
 Open and listen to the guitar audio in MATLAB. Find the sampling frequency, number of samples, and duration. Plot the signal over time.
@@ -152,8 +148,6 @@ Amplitude-frequency graph of guitar audio
 
 Find an impulse response that adds echo to the sound: the output should contain the original signal, an echo at 1/4 the original amplitude after 1 second, and another echo at 1/16 the original amplitude after 2 seconds (`y[n] = x[n] + x[n-1]/4 + x[n-2]/16`). Apply the impulse response via convolution, save and listen to the output, find its duration, and compare it with the original signal. Plot its time-domain and frequency-spectrum graphs and compare them with the original.
 
-🔊 [yankili_gitar.wav — echoed guitar recording](yankili_gitar.wav)
-
 Echo added amplitude-time graph of guitar audio
 
 ![Echo added guitar amplitude-time graph](yankılı_gitar_genlik-zaman.jpg)
@@ -165,10 +159,6 @@ Echo added amplitude-frequency graph of guitar audio
 ### d) AM Modulation at Two Carrier Frequencies
 
 Multiply the echoed signal by `cos(2πfc·t)` to modulate it, using fc = 1 kHz and fc = 10 MHz to produce two different signals. Listen to both. What do you notice?
-
-🔊 [modulated_1khz.wav — modulated at fc = 1 kHz](modulated_1khz.wav)
-
-🔊 [modulated_10mhz.wav — modulated at fc = 10 MHz](modulated_10mhz.wav)
 
 ### e) Modulated Signal at fc = 10 MHz
 
@@ -198,8 +188,6 @@ Filtered demodulated amplitude-frequency graph of guitar audio
 
 Add random noise to this signal — for example, White Gaussian Noise. Listen to the noisy audio and make sure the noise is audible. Plot its frequency spectrum.
 
-🔊 [noisy_gitar.wav — demodulated signal with added noise](noisy_gitar.wav)
-
 Noisy amplitude-time graph of guitar audio
 
 ![Noisy guitar amplitude-time graph](gurultulu_gitar_genlik-zaman.jpg)
@@ -215,5 +203,3 @@ Filtered noisy amplitude-frequency graph of guitar audio
 ### i) Recovering the Original Signal
 
 Using the impulse response from part (c), recover the original signal. Save and listen to this audio. Plot its frequency spectrum. Is it the same as the first recording?
-
-🔊 [recovered_gitar.wav — recovered original signal](recovered_gitar.wav)
