@@ -198,7 +198,7 @@ Filter out this noise. Compare whether the resulting spectrum matches the echoed
 
 Filtered noisy amplitude-frequency graph of guitar audio
 
-![Filtered noisy guitar amplitude-frequency graph](filtreli_gurultulu_gitar_genlik-zaman.jpg)
+![Filtered noisy guitar amplitude-frequency graph](filtreli_gurultulu_gitar_genlik-frekans.jpg)
 
 ### i) Recovering the Original Signal
 
