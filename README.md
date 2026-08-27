@@ -1,8 +1,12 @@
 # Image and Audio Signal Processing Project With MATLAB
 
 MATLAB coursework project for Signals and Systems. The project applies core signals-and-systems concepts — convolution, the Fourier transform, filtering, and amplitude modulation — to real image and audio data. It contains seven MATLAB exercises split into two parts:
+
 **Image Processing** (reading and inspecting RGB/grayscale images, pixel-level statistics and probability, histogram analysis, image arithmetic, downsampling and 2×2 pooling, edge detection via 2D convolution, and denoising)
-**Audio Processing & AM Communication** (time- and frequency-domain analysis, echo via an impulse response, AM modulation/demodulation at two carrier frequencies, adding/removing white Gaussian noise with a Butterworth low-pass filter, and signal recovery). Each script is self-contained, runnable, commented in Turkish (as required by the course), and produces the figures and console output documented in the accompanying report. Running the scripts requires MATLAB (developed/tested on R2023b or later) with the Image Processing Toolbox (`rgb2gray`, `imnoise`, `imgaussfilt`, `imhist`, `imwrite`, `imfinfo`), the Signal Processing Toolbox (`butter`, `filter`, `awgn`, `conv`, `conv2`, `fft`), and audio I/O support (`audioread`, `audiowrite`, `sound`).
+
+**Audio Processing & AM Communication** (time- and frequency-domain analysis, echo via an impulse response, AM modulation/demodulation at two carrier frequencies, adding/removing white Gaussian noise with a Butterworth low-pass filter, and signal recovery). 
+
+Each script is self-contained, runnable, commented in Turkish (as required by the course), and produces the figures and console output documented in the accompanying report. Running the scripts requires MATLAB (developed/tested on R2023b or later) with the Image Processing Toolbox (`rgb2gray`, `imnoise`, `imgaussfilt`, `imhist`, `imwrite`, `imfinfo`), the Signal Processing Toolbox (`butter`, `filter`, `awgn`, `conv`, `conv2`, `fft`), and audio I/O support (`audioread`, `audiowrite`, `sound`).
 
 ## Repository Structure
 
