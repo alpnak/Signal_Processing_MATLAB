@@ -93,15 +93,15 @@ This question implements various downsampling methods to compress the image whil
 
 **d)** Apply 2×2 max pooling, min pooling, and average pooling (each reducing the image to a quarter of its size) and display the three results together with the original in a 2×2 layout, along with their file sizes.
 
-Max pooled lion imaage
+Max pooled lion image
 
 ![Max pooled](max_pooled.jpg)
 
-Min pooled lion imaage
+Min pooled lion image
 
 ![Min pooled](min_pooled.jpg)
 
-Average pooled lion imaage
+Average pooled lion image
 
 ![Average pooled](average_pooled.jpg)
 
@@ -130,11 +130,20 @@ Convolved city image
 This question adds noise to the image and then filters it out.
 
 **a)** Add Gaussian noise with variances 0.1, 0.4, and 0.7 to the color image using `imnoise`. Display the original image together with the three noisy versions in a single figure.
-**b)** Apply a Gaussian filter (`imgaussfilt`) to the 0.1-variance noisy image. Display and compare the original, noisy, and filtered images side by side in one figure.
 
-<!-- Add the Q6 output image(s) here, e.g.: -->
-<!-- ![Q6a - Original and noisy images](images/q6a_noise.png) -->
-<!-- ![Q6b - Original, noisy, and filtered images](images/q6b_denoised.png) -->
+0.1 variance Gaussian noise added lion image
+
+![0.1 variance lion image](01_varyans_aslan.jpg)
+
+0.4 variance Gaussian noise added lion image
+
+![0.4 variance lion image](04_varyans_aslan.jpg)
+
+0.7 variance Gaussian noise added lion image
+
+![0.7 variance lion image](07_varyans_aslan.jpg)
+
+**b)** Apply a Gaussian filter (`imgaussfilt`) to the 0.1-variance noisy image. Display and compare the original, noisy, and filtered images side by side in one figure.
 
 ## Part 2 — Audio Processing & AM Communication (Question 7)
 
