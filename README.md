@@ -8,27 +8,6 @@ MATLAB coursework project for Signals and Systems. The project applies core sign
 
 Each script is self-contained, runnable, commented in Turkish (as required by the course), and produces the figures and console output documented in the accompanying report. Running the scripts requires MATLAB (developed/tested on R2023b or later) with the Image Processing Toolbox (`rgb2gray`, `imnoise`, `imgaussfilt`, `imhist`, `imwrite`, `imfinfo`), the Signal Processing Toolbox (`butter`, `filter`, `awgn`, `conv`, `conv2`, `fft`), and audio I/O support (`audioread`, `audiowrite`, `sound`).
 
-## Repository Structure
-
-```
-.
-├── soru1.m                       # Q1: Read RGB image, pixel dimensions, RGB values, display
-├── soru2.m                       # Q2: Grayscale conversion, histogram, probability, thresholding/color-map, cropping
-├── soru3.m                       # Q3: Channel averages, mean subtraction, image inversion, image + inverse
-├── soru4.m                       # Q4: File size, row/column decimation, 2x2 max/min/average pooling
-├── soru5.m                       # Q5: Grayscale conversion + 1x2 impulse response convolution (edge detection)
-├── soru6.m                       # Q6: Gaussian noise (var 0.1/0.4/0.7) + Gaussian filtering
-├── soru7.m                       # Q7: Audio analysis, echo, AM modulation/demodulation, noise, filtering
-├── aslan.jpeg                    # Input color image used in Q1–Q4 and Q6
-├── sehir.jpg                     # Input color image used in Q5
-├── gitar.wav                     # Input audio file used in Q7
-├── ELE371_Proje.pdf              # Original assignment/project brief
-├── Alperen_Nakiboglu_Proje_Rapor.pdf   # Final project report (methodology, results, figures)
-└── README.md
-```
-
-> Note: `soru1.m`–`soru6.m` assume `aslan.jpeg`/`sehir.jpg` are loaded in the same working directory, and later scripts reuse variables created by earlier ones (e.g. `soru2.m`–`soru4.m` build on `aslan_resim` from `soru1.m`). Run them in order within the same MATLAB session, or open the project as a single script split into `%%` sections.
-
 ## Part 1 — Image Processing (Questions 1–6)
 
 ### Q1 — Reading and Displaying the Color Image
@@ -188,6 +167,7 @@ Echo added amplitude-frequency graph of guitar audio
 Multiply the echoed signal by `cos(2πfc·t)` to modulate it, using fc = 1 kHz and fc = 10 MHz to produce two different signals. Listen to both. What do you notice?
 
 🔊 [modulated_1khz.wav — modulated at fc = 1 kHz](modulated_1khz.wav)
+
 🔊 [modulated_10mhz.wav — modulated at fc = 10 MHz](modulated_10mhz.wav)
 
 ### e) Modulated Signal at fc = 10 MHz
@@ -206,9 +186,13 @@ Modulated amplitude-frequency graph of guitar audio
 
 Multiply this signal again by `cos(2πfc·t)` (fc = 10 MHz) and inspect the frequency spectrum. Then pass it through a low-pass filter to demodulate it and inspect the frequency spectrum again.
 
-<!-- Add the Q7f output here, e.g.: -->
-<!-- ![Q7f - Re-modulated signal, frequency spectrum](images/q7f_remodulated_spectrum.png) -->
-<!-- ![Q7f - Demodulated signal, frequency spectrum](images/q7f_demodulated_spectrum.png) -->
+Demodulated amplitude-frequency graph of guitar audio
+
+![Demodulated guitar amplitude-frequency graph](demodule_gitar_genlik-frekans.jpg)
+
+Filtered demodulated amplitude-frequency graph of guitar audio
+
+![Filtered demodulated guitar amplitude-frequency graph](filtreli_demodule_gitar_genlik-frekans.jpg)
 
 ### g) Adding Noise
 
@@ -216,22 +200,20 @@ Add random noise to this signal — for example, White Gaussian Noise. Listen to
 
 🔊 [noisy_gitar.wav — demodulated signal with added noise](noisy_gitar.wav)
 
-<!-- Add the Q7g output here, e.g.: -->
-<!-- ![Q7g - Noisy signal, time domain](images/q7g_time_domain.png) -->
-<!-- ![Q7g - Noisy signal, frequency spectrum](images/q7g_frequency_spectrum.png) -->
+Noisy amplitude-time graph of guitar audio
+
+![Noisy guitar amplitude-time graph](gurultulu_gitar_genlik-zaman.jpg)
 
 ### h) Filtering the Noise
 
 Filter out this noise. Compare whether the resulting spectrum matches the echoed signal's spectrum.
 
-<!-- Add the Q7h output here, e.g.: -->
-<!-- ![Q7h - Filtered vs. echoed spectrum](images/q7h_filtered_vs_echoed.png) -->
+Filtered noisy amplitude-frequency graph of guitar audio
+
+![Filtered noisy guitar amplitude-frequency graph](filtreli_gurultulu_gitar_genlik-zaman.jpg)
 
 ### i) Recovering the Original Signal
 
 Using the impulse response from part (c), recover the original signal. Save and listen to this audio. Plot its frequency spectrum. Is it the same as the first recording?
 
 🔊 [recovered_gitar.wav — recovered original signal](recovered_gitar.wav)
-
-<!-- Add the Q7i output here, e.g.: -->
-<!-- ![Q7i - Recovered signal, frequency spectrum](images/q7i_recovered_spectrum.png) -->
