@@ -18,59 +18,61 @@ Original color image used throughout this part:
 
 A color image is 3-dimensional (x, y, color), where the color axis holds the red, green, and blue (RGB) intensity values.
 
-**a)** Open the image in MATLAB and find its width and height in pixels.
-**b)** Find the RGB values of the pixel at position (371, 371).
-**c)** Display the image as a figure.
+**a)** The image was opened in MATLAB, and its width and height in pixels were found.
+
+**b)** The RGB values of the pixel at position (371, 371) were found.
+
+**c)** The image was displayed as a figure.
 
 ### Q2 — Grayscale Conversion, Histogram, and Region Recoloring
 
 A grayscale image is 2-dimensional (x, y); each pixel holds a single intensity value between black and white.
 
-**a)** Convert the color image to grayscale and display it as a figure.
+**a)** The color image was converted to grayscale and displayed as a figure.
 
 ![Grey-toned lion image](gri_aslan.png)
 
-**b)** Find the value of the pixel at position (371, 371).
+**b)** The value of the pixel at position (371, 371) was found.
 
-**c)** Plot the histogram of the grayscale image (x-axis: pixel intensity, y-axis: count).
+**c)** The histogram of the grayscale image was plotted (x-axis: pixel intensity, y-axis: count).
 
 ![Grey-toned lion image histogram](gri_aslan_histogram.png)
 
-**d)** Find the probability that a randomly chosen pixel has an intensity greater than 131.
+**d)** The probability that a randomly chosen pixel has an intensity greater than 131 was found.
 
-**e)** Recolor the image using two thresholds (92 and 171): pixels ≤ 92 → black, 92 < pixels ≤ 171 → red, pixels > 171 → yellow. Display the result as a figure.
+**e)** The image was recolored using two thresholds (92 and 171): pixels ≤ 92 were colored black, 92 < pixels ≤ 171 were colored red, and pixels > 171 were colored yellow. The result was displayed as a figure.
 
 ![Recolored lion image](aslan2.png)
 
-**f)** Display, as a separate figure, the region between pixels 200 and 824 (both width and height) of the recolored image.
+**f)** The region between pixels 200 and 824 (both width and height) of the recolored image was displayed as a separate figure.
 
 ![Recolored lion image-2](aslan3.png)
 
 ### Q3 — Channel Averages, Mean Subtraction, and Image Inversion
 
-**a)** Find the average color (R, G, B) value across all pixels of the color image.
+**a)** The average color (R, G, B) value across all pixels of the color image was found.
 
-**b)** Subtract these average values from every pixel and display the new image as a figure.
+**b)** These average values were subtracted from every pixel, and the new image was displayed as a figure.
 
 ![Recolored lion image-3](aslan4.png)
 
-**c)** Compute the inverse of the image — defined as the color values that complement the original values to 255 (i.e. 255 minus each pixel value) — and display it as a figure.
+**c)** The inverse of the image — the color values that complement the original values to 255 (i.e. 255 minus each pixel value) — was computed and displayed as a figure.
 
 ![Recolored lion image-4](aslan5.png)
 
-**d)** Add the inverted image to the original image and display the result as a figure. What do you notice?
+**d)** The inverted image was added to the original image, and the result was displayed as a figure. As expected, this produced an image in which all color values reached 255, which appeared as plain white when displayed.
 
 ### Q4 — Downsampling and 2×2 Pooling
 
 This question implements various downsampling methods to compress the image while trying to preserve as much quality as possible.
 
-**a)** Find the size of the original color image in kilobytes.
+**a)** The size of the original color image was found in kilobytes.
 
-**b)** Remove the even-indexed rows and columns and merge the remaining pixels; save the new image and find its size.
+**b)** The even-indexed rows and columns were removed and the remaining pixels were merged; the new image was saved, and its size was found.
 
-**c)** Keep only every 4th row and column (dropping the rest); save the new image and find its size. Display all three images (original, b, c) side by side in one figure.
+**c)** Only every 4th row and column were kept, with the rest dropped; the new image was saved, and its size was found. The three images (original, b, c) were displayed side by side in one figure.
 
-**d)** Apply 2×2 max pooling, min pooling, and average pooling (each reducing the image to a quarter of its size) and display the three results together with the original in a 2×2 layout, along with their file sizes.
+**d)** 2×2 max pooling, min pooling, and average pooling were applied, each reducing the image to a quarter of its size, and the three results were displayed together with the original in a 2×2 layout, along with their file sizes.
 
 Max pooled lion image
 
@@ -84,7 +86,7 @@ Average pooled lion image
 
 ![Average pooled](average_pooled.jpg)
 
-**e)** Given image quality and file size, which method would you prefer? Compare and explain.
+**e)** Image quality and file size were compared across the three methods, and the preferred method was explained.
 
 ### Q5 — Edge Detection via Convolution
 
@@ -94,7 +96,7 @@ Original color image used throughout this part:
 
 The following 1×2 impulse response is applied to an image (convolution) to detect edges in it.
 
-**a)** Open the city image in MATLAB and convert it to grayscale. Convolve it with the 1×2 impulse response matrix `h[i,j] = [0.02, -0.02]`. Display the new image alongside the original in a single figure and interpret the results.
+**a)** The city image was opened in MATLAB and converted to grayscale. Its convolution with the 1×2 impulse response matrix h[i,j] = [0.02, -0.02] was taken. The new image was displayed alongside the original in a single figure, and the results were interpreted.
 
 Grey-toned city image
 
@@ -108,7 +110,7 @@ Convolved city image
 
 This question adds noise to the image and then filters it out.
 
-**a)** Add Gaussian noise with variances 0.1, 0.4, and 0.7 to the color image using `imnoise`. Display the original image together with the three noisy versions in a single figure.
+**a)** Gaussian noise with variances 0.1, 0.4, and 0.7 was added to the color image using imnoise. The original image was displayed together with the three noisy versions in a single figure.
 
 0.1 variance Gaussian noise added lion image
 
@@ -122,31 +124,25 @@ This question adds noise to the image and then filters it out.
 
 ![0.7 variance lion image](07_varyans_aslan.jpg)
 
-**b)** Apply a Gaussian filter (`imgaussfilt`) to the 0.1-variance noisy image. Display and compare the original, noisy, and filtered images side by side in one figure.
+**b)** A Gaussian filter (imgaussfilt) was applied to the 0.1-variance noisy image. The original, noisy, and filtered images were displayed and compared side by side in one figure.
 
 ## Part 2 — Audio Processing & AM Communication (Question 7)
 
 This part analyzes an audio signal in the time and frequency domains, adds echo, adds and removes noise, and performs the modulation/demodulation stages of AM communication.
 
-### a) Loading and Inspecting the Audio Signal
-
-Open and listen to the guitar audio in MATLAB. Find the sampling frequency, number of samples, and duration. Plot the signal over time.
+### a) The guitar audio was opened and listened to in MATLAB. The sampling frequency, number of samples, and duration were found. The signal was plotted over time.
 
 Amplitude-time graph of guitar audio
 
 ![Guitar amplitude-time graph](gitar_genlik-zaman.jpg)
 
-### b) Frequency Spectrum
-
-Take the Fourier transform of the audio signal and plot its frequency spectrum. Interpret the result.
+### b) The Fourier transform of the audio signal was taken, and its frequency spectrum was plotted and interpreted.
 
 Amplitude-frequency graph of guitar audio
 
 ![Guitar amplitude-frequency graph](gitar_genlik-frekans.jpg)
 
-### c) Adding Echo
-
-Find an impulse response that adds echo to the sound: the output should contain the original signal, an echo at 1/4 the original amplitude after 1 second, and another echo at 1/16 the original amplitude after 2 seconds (`y[n] = x[n] + x[n-1]/4 + x[n-2]/16`). Apply the impulse response via convolution, save and listen to the output, find its duration, and compare it with the original signal. Plot its time-domain and frequency-spectrum graphs and compare them with the original.
+### c) An impulse response that adds echo to the sound was found, producing an output containing the original signal, an echo at 1/4 the original amplitude after 1 second, and another echo at 1/16 the original amplitude after 2 seconds (y[n] = x[n] + x[n-1]/4 + x[n-2]/16). The impulse response was applied via convolution, and the output was saved and listened to. Its duration was found and compared with the original signal, and its time-domain and frequency-spectrum graphs were plotted and compared with the original.
 
 Echo added amplitude-time graph of guitar audio
 
@@ -156,13 +152,9 @@ Echo added amplitude-frequency graph of guitar audio
 
 ![Echo added guitar amplitude-frequency graph](yankılı_gitar_genlik-frekans.jpg)
 
-### d) AM Modulation at Two Carrier Frequencies
+### d) The echoed signal was multiplied by cos(2πfc·t) using fc = 1 kHz and fc = 10 MHz, producing two modulated signals. Both were listened to and compared.
 
-Multiply the echoed signal by `cos(2πfc·t)` to modulate it, using fc = 1 kHz and fc = 10 MHz to produce two different signals. Listen to both. What do you notice?
-
-### e) Modulated Signal at fc = 10 MHz
-
-Plot the time-domain and frequency-spectrum graphs of the signal modulated with the fc = 10 MHz carrier. What do you notice?
+### e) The time-domain and frequency-spectrum graphs of the signal modulated with the fc = 10 MHz carrier were plotted and interpreted.
 
 Modulated amplitude-time graph of guitar audio
 
@@ -172,9 +164,7 @@ Modulated amplitude-frequency graph of guitar audio
 
 ![Modulated guitar amplitude-frequency graph](module_gitar_genlik-frekans.jpg)
 
-### f) Re-modulation, Low-Pass Filtering, and Demodulation
-
-Multiply this signal again by `cos(2πfc·t)` (fc = 10 MHz) and inspect the frequency spectrum. Then pass it through a low-pass filter to demodulate it and inspect the frequency spectrum again.
+### f) This signal was multiplied again by cos(2πfc·t) (fc = 10 MHz), and its frequency spectrum was inspected. It was then passed through a low-pass filter to demodulate it, and its frequency spectrum was inspected again.
 
 Demodulated amplitude-frequency graph of guitar audio
 
@@ -184,22 +174,16 @@ Filtered demodulated amplitude-frequency graph of guitar audio
 
 ![Filtered demodulated guitar amplitude-frequency graph](filtreli_demodule_gitar_genlik-frekans.jpg)
 
-### g) Adding Noise
-
-Add random noise to this signal — for example, White Gaussian Noise. Listen to the noisy audio and make sure the noise is audible. Plot its frequency spectrum.
+### g) Random noise (White Gaussian Noise) was added to the signal. The noisy audio was listened to and confirmed to be audibly noisy, and its frequency spectrum was plotted.
 
 Noisy amplitude-time graph of guitar audio
 
 ![Noisy guitar amplitude-time graph](gurultulu_gitar_genlik-zaman.jpg)
 
-### h) Filtering the Noise
-
-Filter out this noise. Compare whether the resulting spectrum matches the echoed signal's spectrum.
+### h) The noise was filtered out, and the resulting spectrum was compared with the echoed signal's spectrum.
 
 Filtered noisy amplitude-frequency graph of guitar audio
 
 ![Filtered noisy guitar amplitude-frequency graph](filtreli_gurultulu_gitar_genlik-frekans.jpg)
 
-### i) Recovering the Original Signal
-
-Using the impulse response from part (c), recover the original signal. Save and listen to this audio. Plot its frequency spectrum. Is it the same as the first recording?
+### i) Using the impulse response from part (c), the original signal was recovered. This audio was saved and listened to, and its frequency spectrum was plotted and compared with the first recording.
